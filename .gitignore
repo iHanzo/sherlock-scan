@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.svn/
+*.swp
+*~
+*.bak
+*.backup
+*.log
+
+# Dependency management files
+pip-log.txt
+pip-delete-this-directory.txt
+pipenv.lock
+poetry.lock
+
+# Local configuration
+.env
+
+# Other
+.DS_Store
+Thumbs.db
