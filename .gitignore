@@ -32,3 +32,5 @@ poetry.lock
 # Other
 .DS_Store
 Thumbs.db
+*.csv*clustered_records_*
+*.sqlite3
