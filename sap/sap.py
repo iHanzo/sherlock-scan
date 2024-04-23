@@ -53,7 +53,7 @@ def attempt_login(session, login_url, username, password, headers):
         'csrfmiddlewaretoken': headers['X-CSRFToken']
     }
 
-    print(f"{headers}")
+    # print(f"{headers}")
 
     # Make the login attempt with the POST request
     response = session.post(login_url, headers=headers, data=data)
@@ -93,6 +93,7 @@ def set_headers(header_mode, header_values_list, username, usernames):
     elif header_mode == "unique_headers_per_username":
         index = usernames.index(username) % len(header_values_list)
         headers = header_values_list[index].copy()
+    headers['X-Forwarded-For'] = headers.pop('client_ip', 'default_ip')
     return headers
 
 def execute_login(header_mode, target_url, usernames, passwords, header_values_list):
@@ -165,7 +166,8 @@ def execute_login(header_mode, target_url, usernames, passwords, header_values_l
                                           f"Successful attempts: {successful_attempts}\n"
                                           f"Unsuccessful attempts: {unsuccessful_attempts}")
     progress['value'] = 0
-    root.after(0, lambda: start_button.config(state=NORMAL))
+    start_button.config(state=NORMAL)
+    cancel_button.config(state=DISABLED)
 
 def setup_treeview():
     global tree
@@ -395,6 +397,7 @@ start_button.grid(row=9, column=1, pady=5, padx=50, sticky=W+E)
 # Cancel button
 cancel_button = ttk.Button(control_frame, text="Cancel", command=cancel_run)
 cancel_button.grid(row=10, column=1, pady=5, padx=50, sticky=W+E)
+cancel_button.config(state=DISABLED)
 
 # Create the progress bar in your GUI setup
 progress = ttk.Progressbar(root, orient=HORIZONTAL, length=800, mode='determinate')

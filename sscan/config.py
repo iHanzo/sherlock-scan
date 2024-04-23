@@ -10,7 +10,7 @@ def run_clustering(eps_value, min_samples_value, success_threshold):
     start_time = datetime.now()
 
     # Connect to SQLite database and load data
-    conn = sqlite3.connect('db.sqlite3')
+    conn = sqlite3.connect('../db.sqlite3')
     df = pd.read_sql_query("SELECT user_agent, client_ip, accept, accept_encoding, accept_language, connection, host, successful_login FROM myapp_requestlog", conn)
     conn.close()
 
