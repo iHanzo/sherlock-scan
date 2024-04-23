@@ -5,7 +5,7 @@ import sys
 from tkinter import ttk
 from tkinter import scrolledtext
 from tkinter import messagebox
-from clustering import run_clustering
+from config import run_clustering
 
 
 
