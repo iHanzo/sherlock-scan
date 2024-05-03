@@ -1,6 +1,6 @@
 # Django Login Clustering Project
 
-This Django project aims to implement login functionality and clustering analysis of login attempts using DBSCAN.
+This Django project aims to implement login functionality and clustering analysis of login attempts using DBSCAN in Linux OS.
 
 ## Project Structure
 
@@ -20,22 +20,29 @@ This Django project aims to implement login functionality and clustering analysi
 
 ### Prerequisites
 
-- Python 3.x
-- Django
-- scikit-learn
+- Python 3.6+
+- Django 3.1+
+- scikit-learn for clustering analysis
+- Beautiful Soup for HTML parsing in auxiliary scripts
+- Tkinter for building a GUI in associated utilities
 
 ### Installation
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/django-login-clustering.git
+    git clone https://github.com/iHanzo/sherlock-scan
     ```
 
 2. Install dependencies:
 
     ```bash
-    pip install -r requirements.txt
+    sudo apt update
+    sudo apt install python3
+    pip install django
+    pip install scikit-learn
+    pip install beautifulsoup4
+    sudo apt install python3-tk
     ```
 
 3. Apply migrations to create the database schema:
@@ -49,12 +56,18 @@ This Django project aims to implement login functionality and clustering analysi
 1. Start the Django development server:
 
     ```bash
-    python manage.py runserver
+    python manage.py runserver 127.0.0.1:8000
     ```
 
-2. Access the web application at [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to register, login, and view login attempts.
+2. Access the web application at [http://127.0.0.1:8000/register/](http://127.0.0.1:8000/register/) to register, [http://127.0.0.1:8000/login/](http://127.0.0.1:8000/login/) to login, and access myapp_requestlog table in db.sqlite3 to view login attempts.
 
-3. Run the clustering analysis script:
+3. Run SAP to imitate password attacks:
+
+    ``bash
+    python sap.py
+    ```
+
+4. Run the clustering analysis script:
 
     ```bash
     python scan.py
@@ -62,7 +75,7 @@ This Django project aims to implement login functionality and clustering analysi
 
 ## Contributors
 
-- [Cyclingbanana](https://github.com/Cyclingbanana)
+- [iHanzo](https://github.com/iHanzo)
 
 ## License
 

