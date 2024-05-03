@@ -63,7 +63,7 @@ This Django project aims to implement login functionality and clustering analysi
 
 3. Run SAP to imitate password attacks:
 
-    ``bash
+    ```bash
     python sap.py
     ```
 
