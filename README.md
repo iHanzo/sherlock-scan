@@ -79,5 +79,5 @@ This Django project aims to implement login functionality and clustering analysi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under All Rights Reserved License - see the [LICENSE](LICENSE) file for details.
 
